@@ -1,13 +1,17 @@
-import express, { Request, Response } from "express";
+import { Request, Response, Router } from "express";
 import MessageResponse from "../interfaces/MessageResponse";
-import emojisRouter from "./emojis";
+import clothesRouter from "./clothes";
+import electronicsRouter from "./electronics";
+import productsRouter from "./products";
 
-const router = express.Router();
+const router = Router();
 
-router.use("/emojis", emojisRouter);
+router.use("/clothes", clothesRouter);
+router.use("/electronics", electronicsRouter);
+router.use("/products", productsRouter);
 
 router.get("/", (req: Request, res: Response<MessageResponse>) => {
-  res.status(200).json({ message: "API - Aissa Bedr" });
+  return res.status(200).json({ message: "Products API - Aissa Bedr" });
 });
 
 export default router;

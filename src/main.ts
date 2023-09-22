@@ -8,9 +8,15 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
-app.use("/api", apiRouter);
+app.use("/products-api", apiRouter);
 
 connect();
 
